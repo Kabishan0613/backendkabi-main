@@ -1,4 +1,10 @@
-from schemas import NotificationSettingsSchema
+import sys
+import os
+
+# Add the parent directory to sys.path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+
+from socialease_backend.schemas import NotificationSettingsSchema
 
 def get_settings(db, user_id: int):
     return db["notification_settings"].find_one({"user_id": user_id})  # Query MongoDB collection
